@@ -10,6 +10,7 @@ from biostar.server import views, ajax, search, moderate, api, orcid
 from biostar.apps.posts.views import NewAnswer, NewPost, EditPost, external_post_handler
 from biostar.apps.users.views import external_logout, external_login, CaptchaView, DigestManager, unsubscribe
 from biostar.apps.planet.views import BlogPostList
+from biostar.apps.webhook.views import webhookupdate
 
 urlpatterns = patterns('',
 
@@ -89,7 +90,7 @@ urlpatterns = patterns('',
     url(r'^local/search/tags/', search.suggest_tags, name="suggest-tags"),
 
     # Github Webhook continuous deployment url
-    url(r'^webhook/github/update/', biostar.apps.webhook.views, name="webhook-update"),
+    url(r'^webhook/github/update/', webhookupdate, name="webhook-update"),
 
     # Returns the planet view
     url(r'^planet/$', BlogPostList.as_view(), name="planet"),
