@@ -88,6 +88,8 @@ urlpatterns = patterns('',
     # Returns suggested tags
     url(r'^local/search/tags/', search.suggest_tags, name="suggest-tags"),
 
+    # Github Webhook continuous deployment url
+    url(r'^webhook/github/update/', biostar.apps.webhook.views, name="webhook-update"),
 
     # Returns the planet view
     url(r'^planet/$', BlogPostList.as_view(), name="planet"),

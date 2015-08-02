@@ -272,6 +272,7 @@ INSTALLED_APPS = [
     'biostar.apps.messages',
     'biostar.apps.badges',
     'biostar.apps.planet',
+    'biostar.apps.webhook',
 
     # The main Biostar server.
     'biostar.server',
