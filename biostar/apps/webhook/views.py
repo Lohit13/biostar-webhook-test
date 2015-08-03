@@ -29,7 +29,7 @@ def webhookupdate(request):
     if request.META.get('CONTENT_TYPE') == 'application/json':
     	payload = request.body
         if verifyIP(request.META.get('REMOTE_ADDR')) and verifyUser(payload):
-            cmd = settings.BASE_DIR+"/update.sh"
+            cmd = settings.HOME_DIR+"/update.sh"
 	    os.system('%s'%(cmd))
 	    return HttpResponse("All done!")
         else:
