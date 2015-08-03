@@ -495,3 +495,6 @@ EMAIL_HOST = get_env("EMAIL_HOST")
 EMAIL_PORT = get_env("EMAIL_PORT", func=int)
 EMAIL_HOST_USER = get_env("EMAIL_HOST_USER")
 EMAIL_HOST_PASSWORD = get_env("EMAIL_HOST_PASSWORD")
+
+# Github handle for Github Webhook Continuous Deployment
+GITHUB_HANDLE = "Lohit13"
