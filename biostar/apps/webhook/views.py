@@ -6,6 +6,7 @@ from django.utils.crypto import constant_time_compare
 import json, hmac, base64, hashlib
 from netaddr import IPAddress, IPNetwork
 from django.conf import settings
+import os, json
 
 def verifyIP(ip):
 	if IPAddress(ip) in IPNetwork('192.30.252.0/22'):
@@ -24,13 +25,13 @@ def verifyUser(payload):
 
 
 @csrf_exempt
-def home(request):
+def webhookupdate(request):
     if request.META.get('CONTENT_TYPE') == 'application/json':
     	payload = request.body
         if verifyIP(request.META.get('REMOTE_ADDR')) and verifyUser(payload):
             cmd = settings.BASE_DIR+"/update.sh"
-			os.system('%s'%(cmd))
-			return HttpResponse("All done!")
+	    os.system('%s'%(cmd))
+	    return HttpResponse("All done!")
         else:
             raise Http404
     else:
